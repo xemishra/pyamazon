@@ -1,0 +1,21 @@
+# Ignore all __pycache__ folders anywhere
+**/__pycache__/
+
+# Ignore all virtual environments (named venv) anywhere
+**/venv/
+
+# Ignore any test folders
+**/test/
+
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore .env files
+*.env
+
+# Ignore session files (like SQLite or VS Code sessions)
+*.session
+*.session-journal
+
+# Ignore your local test script
+test.py
