@@ -1,1 +1,3 @@
-
+lxml
+requests
+beautifulsoup4
