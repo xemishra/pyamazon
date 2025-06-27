@@ -22,9 +22,9 @@ from pyamazon import extractAmazon  # Import the extractor class
 x = extractAmazon("https://amzn.in/d/jbx0FnF")
 
 # Extract and print various details
-print("🛍Title:", x.getTitle())                       # Product title
+print("Title:", x.getTitle())                       # Product title
 print("Availability:", x.getAvailability())         # Availability status (e.g., "In stock")
-print("🏷Brand:", x.getBrand())                       # Brand name
+print("Brand:", x.getBrand())                       # Brand name
 print("Category:", x.getCategory())                 # Product category / breadcrumb
 print("Features:", x.getFeatures())                 # Bullet points / features
 print("Original Price:", x.getOriginalPrice())     # MRP or strike-through price
@@ -54,7 +54,7 @@ print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is
 | `getReviewCount()`                 | Returns total number of customer reviews.                               |
 | `getImages()`                      | Returns a list of product image URLs.                                   |
 | `getSoldBy()`                      | Returns the seller or fulfillment info (e.g., "Fulfilled by Amazon").   |
-| `hasDeal(get_regular_price=False)` | Checks if a deal is active. Optionally returns regular price if `True`. |
+| `getHasDeal(g)`                    | Checks if a deal is active. Optionally returns regular price if `True`. |
 
 #  Features
 - URL-Based Scraping – Extract product data from any Amazon product URL effortlessly.
