@@ -13,7 +13,7 @@ def get_long_description(path="README.md"):
 
 setup(
     name="pyamazon",
-    version="0.0.2",
+    version="0.0.3",
     author="Shivanand Mishra",
     description="Python module to fetch product data from Amazon",
     long_description=get_long_description(),
