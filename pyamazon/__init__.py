@@ -1,1 +1,1 @@
-from .fetchProduct.py import extractAmazon
+from .fetchProduct import extractAmazon
