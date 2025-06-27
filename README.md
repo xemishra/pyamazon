@@ -81,4 +81,4 @@ If Amazon updates their website structure, some features of this module may stop
 Please do not use this tool for spamming, scraping at scale, or violating Amazon’s Terms of Service.
 Use responsibly, respectfully, and at your own risk.
 
-<h2 align="center">Made with ❤️ by <a href="https://github.com/xemishra">Shivanand Mishra</a></h2>
+<h1 align="center">Made with ❤️ by <a href="https://github.com/xemishra">Shivanand Mishra</a></h1>
