@@ -54,7 +54,7 @@ print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is
 | `getReviewCount()`                 | Returns total number of customer reviews.                               |
 | `getImages()`                      | Returns a list of product image URLs.                                   |
 | `getSoldBy()`                      | Returns the seller or fulfillment info (e.g., "Fulfilled by Amazon").   |
-| `getHasDeal(g)`                    | Checks if a deal is active. Optionally returns regular price if `True`. |
+| `getHasDeal()`                     | Checks if a deal is active. Optionally returns regular price if `True`. |
 
 #  Features
 - URL-Based Scraping – Extract product data from any Amazon product URL effortlessly.
@@ -72,3 +72,13 @@ print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is
 - Structured Output – Access all product data in a clean Python dict format.
 - Multi-domain Friendly – Works on amazon.in, amazon.com, and other country-specific domains.
 - Lightweight & No API Key Needed – Pure scraping using requests and BeautifulSoup, no authentication required.
+
+# Disclaimer
+This project is intended for educational and personal use only.
+PyAmazon is not affiliated with Amazon in any way.
+Product data is extracted by parsing publicly available HTML, which may change over time.
+If Amazon updates their website structure, some features of this module may stop working.
+Please do not use this tool for spamming, scraping at scale, or violating Amazon’s Terms of Service.
+Use responsibly, respectfully, and at your own risk.
+
+<h2 align="center">Made with ❤️ by <a href="https://github.com/xemishra">Shivanand Mishra</a></h2>
