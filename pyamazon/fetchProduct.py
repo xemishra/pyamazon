@@ -114,7 +114,7 @@ class extractAmazon:
         tag = self.soup.select_one("span#acrCustomerReviewText")
         return tag.get_text(strip=True) if tag else ""
 
-    def hasDeal(self, get_regular_price=False):
+    def getHasDeal(self, get_regular_price=False):
         # Check if there's a deal (like Lightning Deal, etc.)!
         deal_span = self.soup.select_one("#dealBadgeSupportingText")
         if get_regular_price:
