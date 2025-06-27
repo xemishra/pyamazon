@@ -38,6 +38,24 @@ print("Images:", x.getImages())                     # Product image URLs
 print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is shown
 ```
 
+# Methods
+| Method                             | Description                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| `getTitle()`                       | Returns the product title as a string.                                  |
+| `getAvailability()`                | Returns the availability status (e.g., "In stock", "Out of stock").     |
+| `getBrand()`                       | Extracts the brand or seller name.                                      |
+| `getCategory()`                    | Returns a list of product categories (breadcrumb path).                 |
+| `getFeatures()`                    | Returns a list of feature bullet points.                                |
+| `getOriginalPrice()`               | Extracts the original MRP or strike-through price.                      |
+| `getPrice()`                       | Gets the current/final price.                                           |
+| `getDiscountPercent()`             | Calculates and returns the discount percentage.                         |
+| `getDescription()`                 | Returns a short description or summary of the product.                  |
+| `getRating()`                      | Returns the star rating (e.g., "4.2 out of 5 stars").                   |
+| `getReviewCount()`                 | Returns total number of customer reviews.                               |
+| `getImages()`                      | Returns a list of product image URLs.                                   |
+| `getSoldBy()`                      | Returns the seller or fulfillment info (e.g., "Fulfilled by Amazon").   |
+| `hasDeal(get_regular_price=False)` | Checks if a deal is active. Optionally returns regular price if `True`. |
+
 #  Features
 - URL-Based Scraping – Extract product data from any Amazon product URL effortlessly.
 - Title Extraction – Get the full product title in clean text.
