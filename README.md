@@ -4,7 +4,7 @@
 
 <h2 align="center">Effortlessly extract Amazon product data with Python.</h3>
 
-# 📦 About PyAmazon
+# About PyAmazon
 PyAmazon is a lightweight yet powerful Python module designed to extract structured product information from Amazon product pages. Whether you're building price trackers, analytics tools, or e-commerce scrapers, PyAmazon offers a clean and reliable interface for accessing titles, pricing, ratings, reviews, availability, images, discounts, and more — all from a single Amazon URL.
 
 Built using requests and BeautifulSoup, the module requires no API key or authentication and is tailored for simplicity, accuracy, and extensibility. It supports Indian and global Amazon domains, making it ideal for both personal and production use.
@@ -22,18 +22,35 @@ from pyamazon import extractAmazon  # Import the extractor class
 x = extractAmazon("https://amzn.in/d/jbx0FnF")
 
 # Extract and print various details
-print("🛍️ Title:", x.getTitle())                       # Product title
-print("📦 Availability:", x.getAvailability())         # Availability status (e.g., "In stock")
-print("🏷️ Brand:", x.getBrand())                       # Brand name
-print("🧭 Category:", x.getCategory())                 # Product category / breadcrumb
-print("🔹 Features:", x.getFeatures())                 # Bullet points / features
-print("💸 Original Price:", x.getOriginalPrice())     # MRP or strike-through price
-print("💰 Current Price:", x.getPrice())               # Final/current selling price
-print("🔻 Discount Percent:", x.getDiscountPercent()) # Calculated discount percentage
-print("📝 Description:", x.getDescription())           # Product description
-print("⭐ Rating:", x.getRating())                      # Star rating (e.g., "4.3 out of 5 stars")
-print("🏪 Sold By:", x.getSoldBy())                    # Seller information
-print("🧮 Review Count:", x.getReviewCount())          # Total number of reviews
-print("🖼️ Images:", x.getImages())                     # Product image URLs
-print("🔥 Has Deal:", x.getHasDeal())                     # Whether a deal badge is shown
+print("🛍Title:", x.getTitle())                       # Product title
+print("Availability:", x.getAvailability())         # Availability status (e.g., "In stock")
+print("🏷Brand:", x.getBrand())                       # Brand name
+print("Category:", x.getCategory())                 # Product category / breadcrumb
+print("Features:", x.getFeatures())                 # Bullet points / features
+print("Original Price:", x.getOriginalPrice())     # MRP or strike-through price
+print("Current Price:", x.getPrice())               # Final/current selling price
+print("Discount Percent:", x.getDiscountPercent()) # Calculated discount percentage
+print("Description:", x.getDescription())           # Product description
+print("Rating:", x.getRating())                      # Star rating (e.g., "4.3 out of 5 stars")
+print("Sold By:", x.getSoldBy())                    # Seller information
+print("Review Count:", x.getReviewCount())          # Total number of reviews
+print("Images:", x.getImages())                     # Product image URLs
+print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is shown
 ```
+
+#  Features
+- URL-Based Scraping – Extract product data from any Amazon product URL effortlessly.
+- Title Extraction – Get the full product title in clean text.
+- Price & Discount – Fetch current price, original price (MRP), and auto-calculated discount percentage.
+- Availability Status – Know whether a product is in stock or unavailable.
+- Product Description – Retrieve the official product description or summary.
+- Feature Bullets – Get a list of key product features.
+- Ratings & Reviews – Extract average rating and total number of reviews.
+- Image URLs – Grab high-resolution product images.
+- Brand Name – Detect the brand or seller mentioned on the product page.
+- Category Path – Extract the product’s full category hierarchy (breadcrumb).
+- Deal Detection – Identify if a product is currently under a deal or promotion.
+- Sold By Info – Get the seller name (e.g., "Fulfilled by Amazon").
+- Structured Output – Access all product data in a clean Python dict format.
+- Multi-domain Friendly – Works on amazon.in, amazon.com, and other country-specific domains.
+- Lightweight & No API Key Needed – Pure scraping using requests and BeautifulSoup, no authentication required.
