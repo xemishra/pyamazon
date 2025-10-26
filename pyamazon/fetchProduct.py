@@ -1,4 +1,3 @@
-# Importing required libraries:
 import re  # For using regular expressions (e.g., extracting price digits)!
 import requests  # To send HTTP requests to Amazon!
 from bs4 import BeautifulSoup as bs  # To parse and extract data from HTML pages!
