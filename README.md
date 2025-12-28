@@ -83,4 +83,7 @@ If Amazon updates their website structure, some features of this module may stop
 Please do not use this tool for spamming, scraping at scale, or violating Amazon’s Terms of Service.
 Use responsibly, respectfully, and at your own risk.
 
+## Buy ME a Coffee:
+[![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/xemishra)
+
 <h3 align="center">Made with ❤️ by <a href="https://github.com/xemishra">Shivanand Mishra</a></h3>
