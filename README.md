@@ -38,6 +38,7 @@ print("Sold By:", x.getSoldBy())                    # Seller information
 print("Review Count:", x.getReviewCount())          # Total number of reviews
 print("Images:", x.getImages())                     # Product image URLs
 print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is shown
+print("Has Bank Offer:", x.getHasBankOffer())       # Whether a bank offer is available
 ```
 
 # Methods
@@ -57,6 +58,8 @@ print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is
 | `getImages()`                      | Returns a list of product image URLs.                                   |
 | `getSoldBy()`                      | Returns the seller or fulfillment info (e.g., "Fulfilled by Amazon").   |
 | `getHasDeal()`                     | Checks if a deal is active. Optionally returns regular price if `True`. |
+| `getHasBankOffer()` | Checks whether any bank or card offer is available for the product.                    |
+
 
 #  Features
 - URL-Based Scraping – Extract product data from any Amazon product URL effortlessly.
