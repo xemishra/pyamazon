@@ -19,4 +19,4 @@
 
 # Ignore your local test script!
 test.py
-*.idea/
+.idea/
