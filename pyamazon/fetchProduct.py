@@ -157,3 +157,22 @@ class extractAmazon:
         if bullets:
             return " ".join(bullets[:2])
         return ""
+
+    def getHasBankOffer(self):
+        # Extract bank offer text if available, otherwise return default message
+        if not self.soup:
+            return "No bank offer"
+        # Common selectors where Amazon shows bank offers
+        selectors = [
+            "span#promotionDetails",
+            "div#itembox-InstantBankDiscount",
+            "span.a-size-base.a-color-secondary",
+            "div.a-section.a-spacing-small span"
+        ]
+        for sel in selectors:
+            tag = self.soup.select_one(sel)
+            if tag:
+                text = tag.get_text(strip=True)
+                if "Bank" in text or "bank" in text:
+                    return text
+        return "N/A"
