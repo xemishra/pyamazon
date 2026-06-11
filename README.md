@@ -38,7 +38,7 @@ print("Sold By:", x.getSoldBy())                    # Seller information
 print("Review Count:", x.getReviewCount())          # Total number of reviews
 print("Images:", x.getImages())                     # Product image URLs
 print("Has Deal:", x.getHasDeal())                     # Whether a deal badge is shown
-print("Has Bank Offer:", x.getHasBankOffer())       # Whether a bank offer is available
+print("Has Bank Offer:", x.getHasBankOffer())       # Whether a bank offer is available.
 ```
 
 # Methods
