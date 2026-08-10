@@ -1,35 +1,102 @@
-name: Publish to PyPI on Release
+name: Publish Python Package
 
 on:
   release:
-    types: [published]
+    types:
+      - published
 
 permissions:
   contents: read
 
+concurrency:
+  group: publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
 jobs:
-  publish-to-pypi:
+  build:
+    name: Build package
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Configure Python
-        uses: actions/setup-python@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
-      - name: Prepare Build Environment
+      - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install build
+          python -m pip install build twine
 
-      - name: Package Distribution
+      - name: Build distributions
         run: python -m build
 
-      - name: Upload to PyPI
-        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      - name: Validate distributions
+        run: python -m twine check dist/*
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_TOKEN }}
+          name: python-distributions
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pyamazon
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+
+  publish-github:
+    name: Publish to GitHub Packages
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Twine
+        run: python -m pip install --upgrade twine
+
+      - name: Publish to GitHub Packages
+        env:
+          TWINE_USERNAME: ${{ github.actor }}
+          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m twine upload \
+            --repository-url https://pypi.pkg.github.com/xemishra/ \
+            dist/*
