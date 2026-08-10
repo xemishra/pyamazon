@@ -6,20 +6,21 @@ from bs4 import BeautifulSoup as bs  # To parse and extract data from HTML pages
 headers = {
     # Some optional headers are commented out, not required unless needed!
     #'authority': 'www.amazon.in',
-    'method': 'GET',
-    'scheme': 'https',
-    'dnt': '1',
-    'upgrade-insecure-requests': '1',
-    'user-agent': 'Mozilla/5.0 ...',  # Browser identity string!
-    'accept': 'text/html,application/xhtml+xml,...',  # Accepted content types!
-    'sec-fetch-site': 'none',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-user': '?1',
-    'sec-fetch-dest': 'document',
-    'referer': 'https://www.amazon.in/',  # Referrer page!
-    'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    "method": "GET",
+    "scheme": "https",
+    "dnt": "1",
+    "upgrade-insecure-requests": "1",
+    "user-agent": "Mozilla/5.0 ...",  # Browser identity string!
+    "accept": "text/html,application/xhtml+xml,...",  # Accepted content types!
+    "sec-fetch-site": "none",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-user": "?1",
+    "sec-fetch-dest": "document",
+    "referer": "https://www.amazon.in/",  # Referrer page!
+    "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
     # 'cookie': '',  # Can be added if Amazon blocks access!
 }
+
 
 # Main class to extract product information from Amazon product page!
 class extractAmazon:
@@ -83,7 +84,7 @@ class extractAmazon:
         selectors = [
             "#priceblock_ourprice",
             "#corePriceDisplay_desktop_feature_div span.a-price-whole",
-            "#corePrice_desktop span.a-offscreen"
+            "#corePrice_desktop span.a-offscreen",
         ]
         for sel in selectors:
             tag = self.soup.select_one(sel)
@@ -101,7 +102,7 @@ class extractAmazon:
     def getImages(self):
         # Get the main image of the product!
         img = self.soup.select_one("div#imgTagWrapperId img")
-        return [img['src']] if img and 'src' in img.attrs else []
+        return [img["src"]] if img and "src" in img.attrs else []
 
     def getRating(self):
         # Extract star rating (e.g., "4.3 out of 5 stars")!
@@ -125,15 +126,29 @@ class extractAmazon:
         # Extract the category trail (e.g., Electronics > Laptops)!
         if not self.soup:
             return []
-        breadcrumb = self.soup.select("ul.a-unordered-list.a-horizontal.a-size-small li span.a-list-item")
-        return [crumb.get_text(strip=True) for crumb in breadcrumb if crumb.get_text(strip=True)]
+        breadcrumb = self.soup.select(
+            "ul.a-unordered-list.a-horizontal.a-size-small li span.a-list-item"
+        )
+        return [
+            crumb.get_text(strip=True)
+            for crumb in breadcrumb
+            if crumb.get_text(strip=True)
+        ]
 
     def getFeatures(self):
         # Return a list of bullet points from the features section!
         if not self.soup:
             return []
         ul = self.soup.select_one("#feature-bullets ul")
-        return [li.get_text(strip=True) for li in ul.select("li") if li.get_text(strip=True)] if ul else []
+        return (
+            [
+                li.get_text(strip=True)
+                for li in ul.select("li")
+                if li.get_text(strip=True)
+            ]
+            if ul
+            else []
+        )
 
     def getSoldBy(self):
         # Return the name of the seller!
@@ -167,7 +182,7 @@ class extractAmazon:
             "span#promotionDetails",
             "div#itembox-InstantBankDiscount",
             "span.a-size-base.a-color-secondary",
-            "div.a-section.a-spacing-small span"
+            "div.a-section.a-spacing-small span",
         ]
         for sel in selectors:
             tag = self.soup.select_one(sel)

@@ -20,3 +20,11 @@
 # Ignore your local test script!
 test.py
 .idea/
+
+dist/
+
+build/
+
+*.egg-info/
+
+.venv/
