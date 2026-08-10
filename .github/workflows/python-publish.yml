@@ -67,36 +67,4 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-
-
-  publish-github:
-    name: Publish to GitHub Packages
-    needs: build
-    runs-on: ubuntu-latest
-
-    permissions:
-      packages: write
-
-    steps:
-      - name: Download distributions
-        uses: actions/download-artifact@v4
-        with:
-          name: python-distributions
-          path: dist/
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install Twine
-        run: python -m pip install --upgrade twine
-
-      - name: Publish to GitHub Packages
-        env:
-          TWINE_USERNAME: ${{ github.actor }}
-          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python -m twine upload \
-            --repository-url https://pypi.pkg.github.com/xemishra/ \
-            dist/*
+        
